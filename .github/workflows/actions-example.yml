@@ -12,5 +12,8 @@ jobs:
           java-version: '11'
       -
         name: Run java application
-        run: java -cp java GithubActionApplication
+        run: |
+          cd src/main/java/com/example/githubaction
+          javac GithubActionApplication.java
+          java GithubActionApplication
 
