@@ -15,5 +15,5 @@ jobs:
         run: |
           cd src/main/java/com/example/githubaction
           javac GithubActionApplication.java
-          java -classpath /src/main/java com.example.githubaction.GithubActionApplication
+          java -cp java GithubActionApplication
 
