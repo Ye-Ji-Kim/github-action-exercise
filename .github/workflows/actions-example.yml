@@ -15,5 +15,5 @@ jobs:
         run: |
           cd src/main/java/com/example/githubaction
           javac GithubActionApplication.java
-          java -cp java GithubActionApplication
+          java -cp /opt/hostedtoolcache/Java_Zulu_jdk/11.0.14-9/x64/lib;. GithubActionApplication
 
