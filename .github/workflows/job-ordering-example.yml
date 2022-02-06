@@ -1,4 +1,4 @@
-name: parallel-jobs
+name: job-ordering-example
 on:
   push:
 jobs:
