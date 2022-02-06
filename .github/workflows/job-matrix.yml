@@ -1,0 +1,28 @@
+name: job-matrix
+on:
+  push:
+jobs:
+  my-job:
+    strategy:
+      matrix:
+        # os and node is matrix parameter(user-defined key)
+        # The list of possible values for each parameter are used in a cartesian product to create jobs.
+        # This section defines a 2 x 3 matrix of 6 jobs, each with a different combination of os and node.
+        os: [ubuntu-16.04, ubuntu-18.04]
+        node: [6, 8, 10]
+        exclude: # The exclude keyword prevents jobs with specific configurations from running.
+          -
+            os: ubuntu-16.04
+            node: 6
+        include: # include allows you to add new jobs to the matrix. Note that the include rules always evaluated after the exclude rules.
+          -
+            os: macos-latest
+            node: 10
+    runs-on: ${{ matrix.os }}
+    steps:
+      -
+        uses: actions/setup-node@2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm test
