@@ -10,3 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "More work at the same time"
+
+# jobs are run in parallel by default
