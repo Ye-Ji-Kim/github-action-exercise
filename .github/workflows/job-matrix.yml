@@ -8,16 +8,16 @@ jobs:
         # os and node is matrix parameter(user-defined key)
         # The list of possible values for each parameter are used in a cartesian product to create jobs.
         # This section defines a 2 x 3 matrix of 6 jobs, each with a different combination of os and node.
-        os: [ubuntu-16.04, ubuntu-18.04]
-        node: ['12', '14', '16']
+        os: [ubuntu-latest, windows-latest]
+        node: [12, 14, 16]
         exclude: # The exclude keyword prevents jobs with specific configurations from running.
           -
-            os: ubuntu-16.04
-            node: '12'
+            os: ubuntu-latest
+            node: 12
         include: # include allows you to add new jobs to the matrix. Note that the include rules always evaluated after the exclude rules.
           -
             os: macos-latest
-            node: '16'
+            node: 16
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
