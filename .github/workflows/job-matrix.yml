@@ -5,11 +5,13 @@ jobs:
   my-job:
     strategy:
       matrix:
-        # os and node is matrix parameter(user-defined key)
+        # os, node and architecture are matrix parameter(user-defined key)
         # The list of possible values for each parameter are used in a cartesian product to create jobs.
         # This section defines a 2 x 3 matrix of 6 jobs, each with a different combination of os and node.
         os: [ubuntu-latest, windows-latest]
         node: [12, 14, 16]
+        architecture:
+          - x64
         exclude: # The exclude keyword prevents jobs with specific configurations from running.
           -
             os: ubuntu-latest
@@ -18,6 +20,7 @@ jobs:
           -
             os: macos-latest
             node: 16
+            architecture: x86
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -25,5 +28,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
+          architecture: ${{ matrix.architecture }}
       - run: npm install
       - run: npm test
