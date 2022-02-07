@@ -46,7 +46,7 @@ jobs:
         run: echo "You will always see this"
       -
         name: Canceled
-        if: ${{ canceled() }}  # canceled() returns true if the workflow was canceled.
+        if: ${{ cancelled() }}  # canceled() returns true if the workflow was canceled.
         run: echo "You canceled the workflow"
       -
         name: Failure
