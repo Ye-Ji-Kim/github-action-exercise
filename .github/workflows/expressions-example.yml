@@ -1,7 +1,5 @@
 name: expressions-example
-on:
-  push:
-  pull:
+on: push
 jobs:
   use-expressions:  # workflows support evaluating expressions with context variables.
     strategy:
